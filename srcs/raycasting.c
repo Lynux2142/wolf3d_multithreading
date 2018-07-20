@@ -6,7 +6,7 @@
 /*   By: lguiller <lguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 14:06:10 by lguiller          #+#    #+#             */
-/*   Updated: 2018/07/20 15:03:15 by lguiller         ###   ########.fr       */
+/*   Updated: 2018/07/20 17:43:43 by lguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,22 +66,30 @@ static void	ft_fp_vert(t_ray *ray, t_player *p, char map[MAPY][MAPX], double a)
 void		*ft_wall_dist(void *ptr)
 {
 	t_all	*all;
+	int		x;
 
 	all = (t_all*)ptr;
-	ft_fp_hori(&all->rc.ray_h, &all->p, all->rc.map, all->a);
-	ft_fp_vert(&all->rc.ray_v, &all->p, all->rc.map, all->a);
-	if (all->rc.ray_h.dist != all->rc.ray_h.dist || all->rc.ray_v.dist != all->rc.ray_v.dist)
-		all->rc.ray = (all->rc.ray_h.dist != all->rc.ray_h.dist) ? all->rc.ray_v : all->rc.ray_h;
-	else
-		all->rc.ray = (all->rc.ray_h.dist <= all->rc.ray_v.dist) ? all->rc.ray_h : all->rc.ray_v;
-	if (all->p.ray_infos == 1)
+	x = -1;
+	while (++x < THREAD)
 	{
-		ft_putstr("ray dist: ");
-		ft_putnbr(all->rc.ray.dist);
-		ft_putchar('\n');
+		ft_fp_hori(&all->rc.ray_h, &all->p, all->rc.map, all->a);
+		ft_fp_vert(&all->rc.ray_v, &all->p, all->rc.map, all->a);
+		if (all->rc.ray_h.dist != all->rc.ray_h.dist || all->rc.ray_v.dist != all->rc.ray_v.dist)
+			all->rc.ray = (all->rc.ray_h.dist != all->rc.ray_h.dist) ? all->rc.ray_v : all->rc.ray_h;
+		else
+			all->rc.ray = (all->rc.ray_h.dist <= all->rc.ray_v.dist) ? all->rc.ray_h : all->rc.ray_v;
+		if (all->p.ray_infos == 1)
+		{
+			ft_putstr("ray dist: ");
+			ft_putnbr(all->rc.ray.dist);
+			ft_putchar('\n');
+		}
+		ft_algo(&all->info, all->rc.ray, &all->p, YELLOW);
+		ft_perso(&all->info, all->p.x, all->p.y);
+		ft_print_on_screen(all, all->i, all->lens);
+		all->lens -= ft_rad(RAY_ANGLE) * all->keys_tab[KEY_H];
+		all->a -= ft_rad(RAY_ANGLE);
+		++all->i;
 	}
-	ft_algo(&all->info, all->rc.ray, &all->p, YELLOW);
-	ft_perso(&all->info, all->p.x, all->p.y);
-	ft_print_on_screen(all, all->i, all->lens);
 	pthread_exit(NULL);
 }

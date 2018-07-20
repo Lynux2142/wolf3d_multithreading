@@ -6,7 +6,7 @@
 /*   By: lguiller <lguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 11:55:11 by lguiller          #+#    #+#             */
-/*   Updated: 2018/07/20 15:15:48 by lguiller         ###   ########.fr       */
+/*   Updated: 2018/07/20 18:01:19 by lguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,23 +85,26 @@ static void	ft_test(t_all *tmp, t_all *all)
 
 void		ft_print_all(t_all *all)
 {
-	pthread_t	test[FPX];
-	t_all		*tmp[FPX];
+	pthread_t	test[FPX / THREAD];
+	t_all		*tmp[FPX / THREAD];
 	int			i;
+	int			x;
 
 	all->a = all->p.a + ft_rad(FOV / 2.0);
 	all->lens = ft_rad(FOV / 2.0) * all->keys_tab[KEY_H];
-	all->i = -1;
-	while (++all->i < FPX)
+	all->i = -THREAD;
+	x = 0;
+	while ((all->i += THREAD) < FPX)
 	{
-		tmp[all->i] = (t_all*)malloc(sizeof(t_all));
-		ft_test(tmp[all->i], all);
-		pthread_create(&test[all->i], NULL, ft_wall_dist, tmp[all->i]);
-		all->lens -= ft_rad(RAY_ANGLE) * all->keys_tab[KEY_H];
-		all->a -= ft_rad(RAY_ANGLE);
+		tmp[x] = (t_all*)malloc(sizeof(t_all));
+		ft_test(tmp[x], all);
+		pthread_create(&test[x], NULL, ft_wall_dist, tmp[x]);
+		all->lens -= (double)THREAD * ft_rad(RAY_ANGLE) * all->keys_tab[KEY_H];
+		all->a -= (double)THREAD * ft_rad(RAY_ANGLE);
+		++x;
 	}
 	i = -1;
-	while (++i < FPX)
+	while (++i < FPX / THREAD)
 		pthread_join(test[i], NULL);
 	ft_print_map(&all->info, all->rc.map);
 }

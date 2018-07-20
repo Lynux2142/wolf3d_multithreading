@@ -6,7 +6,7 @@
 /*   By: lguiller <lguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 17:05:59 by lguiller          #+#    #+#             */
-/*   Updated: 2018/07/20 14:53:38 by lguiller         ###   ########.fr       */
+/*   Updated: 2018/07/20 18:00:15 by lguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@
 # define LITTLE			0.00000000000012
 # define TRUE			1
 # define FALSE			0
+# define THREAD			80
 
 # ifdef __linux__
 #  define MOVE_SPEED	2.0
