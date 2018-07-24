@@ -6,7 +6,7 @@
 /*   By: lguiller <lguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 17:05:59 by lguiller          #+#    #+#             */
-/*   Updated: 2018/07/20 18:00:15 by lguiller         ###   ########.fr       */
+/*   Updated: 2018/07/24 14:11:30 by lguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,5 +237,6 @@ int				ft_key_press(int key, t_all *all);
 void			ft_draw(t_all all, char *name);
 void			ft_print_all(t_all *all);
 int				ft_movements(t_all *all);
+int				ft_quit(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bede-fre <bede-fre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 13:24:19 by bede-fre          #+#    #+#             */
-/*   Updated: 2018/07/20 14:54:08 by lguiller         ###   ########.fr       */
+/*   Updated: 2018/07/24 13:58:03 by lguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_key_press(int key, t_all *all)
 	else
 		all->keys_tab[key] = 1;
 	if (key == ESC)
-		exit(0);
+		ft_quit();
 	return (1);
 }
 
