@@ -6,7 +6,7 @@
 #    By: lguiller <lguiller@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/16 12:18:12 by lguiller          #+#    #+#              #
-#    Updated: 2018/07/25 11:37:48 by lguiller         ###   ########.fr        #
+#    Updated: 2018/07/25 19:52:21 by lguiller         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,10 @@ SRCS_DIR		= srcs/
 OBJS_DIR		= objs/
 LIBFT			= libft/libft.a
 MINILIBX		= $(MLX_DIR)/libmlx.a
-FLAGS			= -Wall -Wextra -Werror
+FLAGS			= -Wall -Wextra -Werror -O2 -pthread
 
 ifeq ($(OPE_SYS), Linux)
-	INCLUDES	= -I includes -I libft -I minilibx -I /usr/include
+	INCLUDES	= -I includes -I libft -I minilibx_x11 -I /usr/include
 	MLX_DIR		= minilibx_x11
 	FRAMEWORK	= -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm
 else
@@ -96,8 +96,8 @@ fclean: clean
 	@/bin/rm -f $(NAME)
 
 re:
-	@$(MAKE) fclean
-	@$(MAKE)
+	@$(MAKE) -s fclean
+	@$(MAKE) -s
 
 title:
 	@echo $(_RED)
