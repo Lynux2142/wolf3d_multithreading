@@ -6,7 +6,7 @@
 /*   By: lguiller <lguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 17:05:59 by lguiller          #+#    #+#             */
-/*   Updated: 2018/07/24 14:11:30 by lguiller         ###   ########.fr       */
+/*   Updated: 2018/07/25 11:38:20 by lguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,9 +217,11 @@ typedef struct	s_all
 	double		a;
 	int			i;
 	double		lens;
+	int			x;
 }				t_all;
 
 void			*ft_wall_dist(void *ptr);
+void			ft_print_ray_infos(t_all *all);
 void			ft_algo(t_img *ptr, t_ray ray, t_player *p, int col);
 int				ft_button_press(int key, int x, int y, t_all *all);
 void			ft_init_player(char map[MAPY][MAPX], t_player *p);
@@ -238,5 +240,6 @@ void			ft_draw(t_all all, char *name);
 void			ft_print_all(t_all *all);
 int				ft_movements(t_all *all);
 int				ft_quit(void);
+void			ft_cpy_struct(t_all *tmp, t_all *all);
 
 #endif

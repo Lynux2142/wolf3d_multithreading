@@ -6,7 +6,7 @@
 /*   By: bede-fre <bede-fre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 13:24:19 by bede-fre          #+#    #+#             */
-/*   Updated: 2018/07/24 13:58:03 by lguiller         ###   ########.fr       */
+/*   Updated: 2018/07/25 11:45:13 by lguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ int		ft_button_press(int key, int x, int y, t_all *all)
 	if (key == 1)
 	{
 		all->p.ray_infos = 1;
-		ft_wall_dist(all);
+		all->a = a;
+		ft_print_ray_infos(all);
+		system("leaks wolf3d");
 		all->p.ray_infos = 0;
 	}
 	return (0);

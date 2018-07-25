@@ -6,7 +6,7 @@
 #    By: lguiller <lguiller@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/16 12:18:12 by lguiller          #+#    #+#              #
-#    Updated: 2018/07/24 14:12:24 by lguiller         ###   ########.fr        #
+#    Updated: 2018/07/25 11:37:48 by lguiller         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OPE_SYS			= $(shell uname)
 NAME			= wolf3d
 SRCS1			= main.c check_and_stock_map.c minimap.c init.c \
 					raycasting.c bresenham.c print_env.c \
-					display.c input_device.c movements.c
+					display.c input_device.c movements.c copy_struct.c
 SRCS			= $(addprefix $(SRCS_DIR), $(SRCS1))
 OBJS			= $(addprefix $(OBJS_DIR), $(SRCS1:.c=.o))
 SRCS_DIR		= srcs/
