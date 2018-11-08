@@ -6,7 +6,7 @@
 /*   By: lguiller <lguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 17:05:59 by lguiller          #+#    #+#             */
-/*   Updated: 2018/11/08 17:32:47 by lguiller         ###   ########.fr       */
+/*   Updated: 2018/11/08 17:39:44 by lguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "SDL/SDL.h"
 # include "libft.h"
-# include "libvect.h"
 # include "mlx.h"
 # include <math.h>
 # include <limits.h>

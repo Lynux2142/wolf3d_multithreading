@@ -86,17 +86,16 @@ OBJS			= $(addprefix $(OBJS_DIR), $(SRCS1:.c=.o))
 SRCS_DIR		= srcs/
 OBJS_DIR		= objs/
 LIBFT			= libft/libft.a
-LIBVECT			= libvect/libvect.a
 MINILIBX		= $(MLX_DIR)/libmlx.a
 FLAGS			= -Wall -Wextra -Werror -O2
 
 ifeq ($(OPE_SYS), Linux)
 	MLX_DIR		= minilibx_x11
-	INCLUDES	= -I includes -I libft -I libvect -I $(MLX_DIR) -I /usr/include -I ./ -pthread
+	INCLUDES	= -I includes -I libft -I $(MLX_DIR) -I /usr/include -I ./ -pthread
 	FRAMEWORK	= -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm
 else
 	MLX_DIR		= minilibx
-	INCLUDES	= -I includes -I libft -I libvect -I $(MLX_DIR) -I ./ -pthread
+	INCLUDES	= -I includes -I libft -I $(MLX_DIR) -I ./ -pthread
 	FRAMEWORK	= -framework OpenGL -framework Appkit
 endif
 
@@ -123,22 +122,19 @@ _CUT		= "\033[k"
 ##   TARGETS   ##
 #################
 
-.PHONY: all title libft libvect minilibx create_dir clean fclean re install cleansdl sdl_image sdl_main reall
+.PHONY: all title libft minilibx create_dir clean fclean re install cleansdl sdl_image sdl_main reall
 
 all: create_dir install
 	@$(MAKE) $(NAME)
 
-libvect:
-	@$(MAKE) -sC libvect
-
-libft: libvect
+libft:
 	@$(MAKE) -sC libft
 
 minilibx: libft
 	@$(MAKE) -sC $(MLX_DIR) 2>/dev/null
 
 $(NAME): minilibx $(OBJS)
-	@gcc $(FLAGS) $(OBJS) $(LIBFT) $(LIBVECT) $(FRAMEWORK) $(MINILIBX) -I $(SDL_MAIN_INCLUDE_PATH) \
+	@gcc $(FLAGS) $(OBJS) $(LIBFT) $(FRAMEWORK) $(MINILIBX) -I $(SDL_MAIN_INCLUDE_PATH) \
 		-L $(SDL_MAIN_LIBS) -lSDL2 -I $(SDL_IMAGE_INCLUDE_PATH) -L $(SDL_IMAGE_LIBS) \
 		-lSDL2_image -o $(NAME)
 	@echo $(_CLEAR)$(_YELLOW)"building - "$(_GREEN)$(NAME)$(_END)
@@ -152,14 +148,12 @@ create_dir:
 
 clean:
 	@$(MAKE) -sC libft clean
-	@$(MAKE) -sC libvect clean
 	@$(MAKE) -sC $(MLX_DIR) clean
 	@/bin/rm -rf $(OBJS_DIR)
 	@/bin/rm -rf ./SDL
 
 fclean: clean
 	@$(MAKE) -sC libft fclean
-	@$(MAKE) -sC libvect fclean
 	@/bin/rm -f $(NAME)
 
 re:
