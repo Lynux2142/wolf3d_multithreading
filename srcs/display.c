@@ -6,7 +6,7 @@
 /*   By: lguiller <lguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 11:55:11 by lguiller          #+#    #+#             */
-/*   Updated: 2018/07/25 11:48:03 by lguiller         ###   ########.fr       */
+/*   Updated: 2018/11/08 16:13:04 by lguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void		ft_print_all(t_all *all)
 
 int			ft_quit(void)
 {
-	system("killall afplay");
 	exit(0);
 }
 
@@ -69,13 +68,16 @@ void		ft_draw(t_all all, char *name)
 {
 	char	*title;
 
+	all.prevx = -8000;
+	all.prevy = -8000;
+	all.start_wall = WINY / 2;
 	title = ft_strjoin("wolf3d - ", name);
 	ft_init_mlx(&all, title);
 	free(title);
-	system("afplay ./sounds/music.mp3&");
 	mlx_hook(all.ptr.win, 2, (1L << 0), ft_key_press, &all);
 	mlx_hook(all.ptr.win, 3, (1L << 1), ft_key_release, &all);
 	mlx_hook(all.ptr.win, 4, (1L << 2), ft_button_press, &all);
+	mlx_hook(all.ptr.win, 6, (1L << 6), ft_mouse_motion, &all);
 	mlx_hook(all.ptr.win, 17, 0, ft_quit, 0);
 	mlx_loop_hook(all.ptr.mlx, ft_movements, &all);
 	ft_print_all(&all);

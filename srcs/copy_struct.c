@@ -6,13 +6,23 @@
 /*   By: lguiller <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 11:36:09 by lguiller          #+#    #+#             */
-/*   Updated: 2018/07/25 11:44:53 by lguiller         ###   ########.fr       */
+/*   Updated: 2018/11/08 16:19:57 by lguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	ft_cpy_struct_2(t_all *tmp, t_all *all)
+static void	ft_cpy_struct_3(t_all *tmp, t_all *all)
+{
+	tmp->lens = all->lens;
+	tmp->prevx = all->prevx;
+	tmp->prevy = all->prevy;
+	tmp->start_wall = all->start_wall;
+	tmp->wall_gap1 = all->wall_gap1;
+	tmp->wall_gap2 = all->wall_gap2;
+}
+
+static void	ft_cpy_struct_2(t_all *tmp, t_all *all)
 {
 	tmp->rc.ray_v.dist = all->rc.ray_v.dist;
 	tmp->rc.ray_v.hit = all->rc.ray_v.hit;
@@ -38,10 +48,10 @@ void	ft_cpy_struct_2(t_all *tmp, t_all *all)
 	tmp->p = all->p;
 	tmp->a = all->a;
 	tmp->i = all->i;
-	tmp->lens = all->lens;
+	ft_cpy_struct_3(tmp, all);
 }
 
-void	ft_cpy_struct(t_all *tmp, t_all *all)
+void		ft_cpy_struct(t_all *tmp, t_all *all)
 {
 	int	i;
 

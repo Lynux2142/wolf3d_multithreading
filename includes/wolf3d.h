@@ -6,14 +6,16 @@
 /*   By: lguiller <lguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 17:05:59 by lguiller          #+#    #+#             */
-/*   Updated: 2018/07/25 14:05:10 by lguiller         ###   ########.fr       */
+/*   Updated: 2018/11/08 17:32:47 by lguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
+# include "SDL/SDL.h"
 # include "libft.h"
+# include "libvect.h"
 # include "mlx.h"
 # include <math.h>
 # include <limits.h>
@@ -44,7 +46,6 @@
 # define SECRET			'2'
 # define TP_S			'3'
 # define TP_E			'4'
-# define TO_MAP(x)		(int)x / 64
 # define ALPHA			0xFF000000
 # define BLACK			0
 # define WHITE			0xFFFFFF
@@ -92,6 +93,7 @@
 # else
 #  define MOVE_SPEED	2.0
 #  define RUN_SPEED		5.0
+#  define CROUCH_SPEED	1.0
 #  define ROT_SPEED		2.5
 #  define ESC			53
 #  define KEY_A			0
@@ -102,6 +104,8 @@
 #  define KEY_Q			12
 #  define KEY_E			14
 #  define KEY_T			17
+#  define KEY_CTRL		256
+#  define KEY_ENTER		36
 #  define KEY_SHIFT		257
 #  define KEYS_TAB_SIZE	280
 # endif
@@ -218,6 +222,12 @@ typedef struct	s_all
 	int			i;
 	double		lens;
 	int			x;
+	int			prevx;
+	int			prevy;
+	int			start_wall;
+	int			skip;
+	float		wall_gap1;
+	float		wall_gap2;
 }				t_all;
 
 void			*ft_wall_dist(void *ptr);
@@ -241,5 +251,7 @@ void			ft_print_all(t_all *all);
 int				ft_movements(t_all *all);
 int				ft_quit(void);
 void			ft_cpy_struct(t_all *tmp, t_all *all);
+int				ft_mouse_motion(int x, int y, t_all *all);
+int				to_map(double x);
 
 #endif
