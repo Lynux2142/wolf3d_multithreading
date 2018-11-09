@@ -6,7 +6,7 @@
 /*   By: lguiller <lguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/10 18:22:58 by lguiller          #+#    #+#             */
-/*   Updated: 2018/11/08 10:42:20 by lguiller         ###   ########.fr       */
+/*   Updated: 2018/11/09 10:01:55 by lguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void		ft_init_mlx(t_all *all, char *title)
 {
 	all->ptr.mlx = mlx_init();
 	all->ptr.win = mlx_new_window(all->ptr.mlx, WINX, WINY, title);
-	all->info.img = mlx_new_image(all->ptr.mlx, INFOX, INFOY);
 	all->info.img = mlx_xpm_file_to_image(all->ptr.mlx, SPR_PAPYRUS,
 		&all->sprites.width, &all->sprites.height);
 	all->fp.img = mlx_new_image(all->ptr.mlx, FPX, FPY);

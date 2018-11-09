@@ -6,7 +6,7 @@
 /*   By: lguiller <lguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 17:05:59 by lguiller          #+#    #+#             */
-/*   Updated: 2018/11/08 17:39:44 by lguiller         ###   ########.fr       */
+/*   Updated: 2018/11/09 10:03:56 by lguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@
 # define MAPX			32
 # define MAPY			MAPX
 # define INFOX			256
-# define INFOY			WINY
 # define FPX			960
-# define FPY			600
+# define FPY			540
 # define TEXT_NORTH		"./textures/wood1.xpm"
 # define TEXT_SOUTH		"./textures/stone1.xpm"
 # define TEXT_EAST		"./textures/metal1.xpm"
