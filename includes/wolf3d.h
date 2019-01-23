@@ -6,14 +6,13 @@
 /*   By: lguiller <lguiller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 17:05:59 by lguiller          #+#    #+#             */
-/*   Updated: 2018/11/09 10:03:56 by lguiller         ###   ########.fr       */
+/*   Updated: 2019/01/23 12:57:59 by lguiller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
-# include "SDL/SDL.h"
 # include "libft.h"
 # include "mlx.h"
 # include <math.h>
@@ -24,7 +23,7 @@
 # define MAPY			MAPX
 # define INFOX			256
 # define FPX			960
-# define FPY			540
+# define FPY			600
 # define TEXT_NORTH		"./textures/wood1.xpm"
 # define TEXT_SOUTH		"./textures/stone1.xpm"
 # define TEXT_EAST		"./textures/metal1.xpm"
