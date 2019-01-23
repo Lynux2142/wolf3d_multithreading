@@ -6,7 +6,7 @@
 #    By: lguiller <lguiller@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/16 12:18:12 by lguiller          #+#    #+#              #
-#    Updated: 2019/01/23 12:53:53 by lguiller         ###   ########.fr        #
+#    Updated: 2019/01/23 13:17:03 by lguiller         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,11 +31,11 @@ FLAGS			= -Wall -Wextra -Werror -O2
 ifeq ($(OPE_SYS), Linux)
 	MLX_DIR		= minilibx_x11
 	INCLUDES	= -I includes -I libft -I $(MLX_DIR) -I /usr/include
-	FRAMEWORK	= -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm
+	FRAMEWORK	= -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lpthread
 else
 	MLX_DIR		= minilibx
 	INCLUDES	= -I includes -I libft -I $(MLX_DIR)
-	FRAMEWORK	= -framework OpenGL -framework Appkit
+	FRAMEWORK	= -framework OpenGL -framework Appkit -lpthread
 endif
 
 ##################
