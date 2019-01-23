@@ -4,7 +4,7 @@
 
 ## Telechargement:
 ```
-git clone https://github.com/Lynux2142/fdf.git
+git clone https://github.com/Lynux2142/wolf3d_multithreading.git
 
 git clone https://github.com/Lynux2142/libft.git
 
