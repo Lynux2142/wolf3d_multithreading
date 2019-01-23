@@ -28,11 +28,7 @@ git clone https://github.com/Lynux2142/minilibx.git
 
 * 'q' / 'e' / mouvement de souris = rotation camera
 
-* 'shift' = courir
-
-* 'enter' = activer / desactiver la rotation automatique
-
-* 'left shift' = activer / desactiver le changement de la hauteur a la souris
+* 'left shift' = courir
 
 * 'left ctrl' = s'accroupir
 
