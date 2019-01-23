@@ -36,4 +36,8 @@ git clone https://github.com/Lynux2142/minilibx.git
 
 * 't' = activer / desactiver les textures
 
+* 'enter' (maintenir) = bloquer la rotation de la souris
+
+* 'left clic' = afficher la disance du mur pointe
+
 * 'esc' = quitter
